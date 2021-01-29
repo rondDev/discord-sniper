@@ -1,6 +1,7 @@
 import json
 import re
 import requests
+import sys
 from time import sleep
 
 import colorama
@@ -121,11 +122,11 @@ def Init():
         if config.get('token') == config.get('reedem-token'):
             Clear()
             print(f"\n\n{Fore.RED}Error {Fore.WHITE}Alt token connot be same as Reedem Token!" + Fore.RESET)
-            exit()
+            sys.exit()
         if rtoken == "token-here":
             Clear()
             print(f"\n\n{Fore.RED}Error {Fore.WHITE}You didnt put your alt token in the config.json file" + Fore.RESET)
-            exit()
+            sys.exit()
         else:
             headers = {
                 'Authorization': rtoken,
@@ -136,12 +137,12 @@ def Init():
                 pass
             else:
                 print(f"\n\n{Fore.RED}Error {Fore.WHITE}Alt Token is invalid" + Fore.RESET)
-                exit()
+                sys.exit()
 
     if config.get('token') == "token-here":
         Clear()
         print(f"\n\n{Fore.RED}Error {Fore.WHITE}You didnt put your token in the config.json file" + Fore.RESET)
-        exit()
+        sys.exit()
     else:
         token = config.get('token')
         try:
@@ -149,7 +150,7 @@ def Init():
             os.system(f'title Discord Sniper')
         except discord.errors.LoginFailure:
             print(f"\n\n{Fore.RED}Error {Fore.WHITE}Token is invalid" + Fore.RESET)
-            exit()
+            sys.exit()
 
 
 @Sniper.event
